@@ -1,15 +1,18 @@
 img {
   height: 200px;
   width: 200px;
+  margin: green;
 }
-
+body {
+  background-color: peachpuff;
+}
+h1 {
+  font-family: sans-serif;
+  color: red;
+}
 .melon-div {
   display: inline-block;
   padding: 10px;
   width: 205px;
 }
 
-/* make background color a pale canteloupe color 
-Make heading a sans-serif font in red
-Add a green border to the images in top-melons
-On homepage center the melon image on teh apge*/

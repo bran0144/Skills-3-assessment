@@ -41,43 +41,59 @@ MOST_LOVED_MELONS = {
 }
 
 
-# REPLACE THIS WITH YOUR ROUTES
-
-
-
 @app.route("/top-melons")
 def top_melon_display():
     "Displays top voted melons"
-    #check that user has entered name (in session) if name in session...
-    #if user name in session, render top melons
-    #if not, redirect back to homepage
+    
+    if "user_name" not in session:
+        return render_template("home.html")
+    else:
+        user_name = request.args.get("user_name")
+        session["user_name"] = user_name
+        melons = MOST_LOVED_MELONS
 
+    #Need to pass through the Most loved melons to jinja
+    #where does this go?
     #Need to create a for loop to create divs for all melons in MOST_LOVED_MELONS
     #Template should display: melon's name, melon's num_loves, melon's image
 
-    return render_template("/top-melons.html")
+    return render_template("/top-melons.html", 
+                            user_name=user_name, 
+                            melons=MOST_LOVED_MELONS)
 
 
 @app.route("/")
-def home():
+def index():
     """Melon Favorites Homepage."""
-    # if user name in session, redirect to top melons
-
+    if "user_name" in session:
+        return render_template("/top-melons.html")
+   
     return render_template("home.html")
 
 @app.route("/")
 def get_name():
+    user_name = request.args.get["user_name"]
 
-    #get name that user submitted from request.args
-    #Add user's name to session (just like adding in a dictionary)
-    #After name is added, redirect to /top-melons route
+    session["user_name"] = user_name
+    
+    return render_template("/top-melons.html", user_name=user_name)
+
+# optional:
+# @app.route("/love-melon")
+
+# handles optional form from drop down menu in top melons
+# takes POST request and gets melon from form
+# increases num_loves count in MOST_LOVED_MELONS dictionary
+# renders template thank-you.html
+# Thank you should be personalized Thank you, [name]
+# Should have a link back to top-melons page
 
 
-if __name__ == '__main__':
-    # We have to set debug=True here, since it has to be True at the
-    # point that we invoke the DebugToolbarExtension
-    app.debug = True
+# if __name__ == '__main__':
+#     # We have to set debug=True here, since it has to be True at the
+#     # point that we invoke the DebugToolbarExtension
+#     app.debug = True
 
-    DebugToolbarExtension(app)
+#     DebugToolbarExtension(app)
 
-    app.run(host='0.0.0.0')
+#     app.run(host='0.0.0.0')

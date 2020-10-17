@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{%block title %}Ubermelon. Melons when you want them.{% endblock %}
+
+{%block content %}
+
+
+    <h1>Ubermelon's Most Loved Melons</h1>
+    <div class="image">
+        'img': 'http://www.rareseeds.com/assets/1/14/DimRegular/crenshaw.jpg'
+    </div>
+    <form action="/get_name">
+        <label>Please enter your name:</label>
+        <input type="text" required="true" name="user_name" id="name-input"/>
+        <input type="submit" />
+    </form> 
+
+{% endblock %}    
+    
+
+ 
+ <!-- Double check if we need to do something here with get or to add to sessions-->
+
+          
+      
+           
+          
+</body>
+</html>

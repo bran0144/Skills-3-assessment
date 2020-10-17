@@ -1,2 +1,26 @@
 <!-- Create new template here -->
-<!-- Need to use {%extends %} and {%blaock%} syntax  -->
+<!-- Need to use {%extends %} and {%blaock%} syntax from jinja -->
+<!-- All pages will inherit from here -->
+<!-- Need to use the css file -->
+<!-- Look at APis and shopping site base.html -->
+<!doctype html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+
+<link rel="stylesheet" type="text/css" href="/static/styles.css">
+
+<body>
+    <!-- <div class="container-fluid d-flex header">
+      <h1>
+        <a href="/">It&rsquo;s My Party!</a>
+      </h1>
+  
+      {% for msg in get_flashed_messages() %}
+        <div class="alert alert-info">{{ msg }}</div>
+      {% endfor %}
+    </div>
+   -->
+    {% block content %}{% endblock %}
+  </body>
+  </html>

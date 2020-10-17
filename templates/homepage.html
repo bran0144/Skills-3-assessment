@@ -8,18 +8,26 @@
     <h1>Ubermelon's Most Loved Melons</h1>
     <div class="image">
         'img': 'http://www.rareseeds.com/assets/1/14/DimRegular/crenshaw.jpg'
+    
+    <form method="GET" action="/get_name">
+        <div class="form-group">
+            <label for="name">Please enter your name:</label>
+            <input 
+                id="name-input" 
+                class="form-control" 
+                type="text" 
+                required="true" 
+                name="user_name">
+            <input type="submit">
+        </div>
     </div>
-    <form action="/get_name">
-        <label>Please enter your name:</label>
-        <input type="text" required="true" name="user_name" id="name-input"/>
-        <input type="submit" />
     </form> 
 
 {% endblock %}    
     
 
  
- <!-- Double check if we need to do something here with get or to add to sessions-->
+ <!-- Double check if we need to do something here with get or to add to sessions double check / at end of input-->
 
           
       

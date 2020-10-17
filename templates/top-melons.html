@@ -1,20 +1,27 @@
-<!doctype html>
-<html>
-<head>
-  <title>Top Melons</title>
-  <link rel="stylesheet" type="text/css" href="/static/styles.css">
-</head>
-<body>
-  <!-- Add an h1 here  that says welcome and user's name-->
-  <!-- Create a div for every Most Loved Melon using a Jinja for-loop -->
-  
-  <div class="melon-div">
-    <!-- <h3> Username, this is a melon_name</h3> -->
-    <!-- <img> Melon img here -->
-    <!-- <h2>Number of Loves : num_loves here </h2> -->
+{% extends 'base.html' %}
 
-    <!-- Need to create a Jinja for loop for the four melons-->
+{%block title %}Top Melons{% endblock %}
+
+{%block content %}
+  <h1>Welcome, {{user_name}}!</h1>
+  <!-- Create a div for every Most Loved Melon using a Jinja for-loop -->
+  <!-- Should follow the formatting of melon-div below -->
+  
+  <div class="melons">
+    <h3> {{username}}, this is a {% for melon_name in melons %}
+                                  {{melon_name}}</h3>
+    <!-- <img> Melon img here -->
+    <<h2>Number of Loves : {{num_loves}}</h2>
+
+    
     
   </div>
+
+  {% enblock %}
+  <!-- optional: add a form that does the following: -->
+  <!-- contains a dropdown menu of the 4 melons so that use can only select one at a time-->
+  <!-- each option in menu should display name of melon and the value should be melon id -->
+  <!-- submits to route /love-melon. Should use POST for this (not GET) -->
+  <!--  -->
 </body>
 </html>

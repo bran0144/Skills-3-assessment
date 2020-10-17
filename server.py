@@ -44,6 +44,35 @@ MOST_LOVED_MELONS = {
 # REPLACE THIS WITH YOUR ROUTES
 
 
+
+@app.route("/top-melons")
+def top_melon_display():
+    "Displays top voted melons"
+    #check that user has entered name (in session) if name in session...
+    #if user name in session, render top melons
+    #if not, redirect back to homepage
+
+    #Need to create a for loop to create divs for all melons in MOST_LOVED_MELONS
+    #Template should display: melon's name, melon's num_loves, melon's image
+
+    return render_template("/top-melons.html")
+
+
+@app.route("/")
+def home():
+    """Melon Favorites Homepage."""
+    # if user name in session, redirect to top melons
+
+    return render_template("home.html")
+
+@app.route("/")
+def get_name():
+
+    #get name that user submitted from request.args
+    #Add user's name to session (just like adding in a dictionary)
+    #After name is added, redirect to /top-melons route
+
+
 if __name__ == '__main__':
     # We have to set debug=True here, since it has to be True at the
     # point that we invoke the DebugToolbarExtension

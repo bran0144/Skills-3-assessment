@@ -1,37 +1,31 @@
 {% extends 'base.html' %}
 
-{%block title %}Ubermelon. Melons when you want them.{% endblock %}
+{% block title %}Ubermelon. Melons when you want them.{% endblock %}
 
-{%block content %}
+{% block content %}
 
-
-    <h1>Ubermelon's Most Loved Melons</h1>
-    <div class="image">
-        'img': 'http://www.rareseeds.com/assets/1/14/DimRegular/crenshaw.jpg'
-    
-    <form method="GET" action="/get_name">
-        <div class="form-group">
-            <label for="name">Please enter your name:</label>
-            <input 
-                id="name-input" 
-                class="form-control" 
-                type="text" 
-                required="true" 
-                name="user_name">
-            <input type="submit">
-        </div>
+    <div class="header">
+        <h1>Ubermelon's Most Loved Melons</h1>
     </div>
-    </form> 
 
-{% endblock %}    
-    
-
- 
- <!-- Double check if we need to do something here with get or to add to sessions double check / at end of input-->
-
-          
-      
-           
-          
-</body>
-</html>
+    <div class="image">
+        <img src="http://www.rareseeds.com/assets/1/14/DimRegular/crenshaw.jpg">
+    </div>
+        <div>
+            <form method="GET" action="/get_name">
+                <div class="form-group">
+                    <label for="name">Please enter your name:</label>
+                    <input 
+                        id="name-input" 
+                        class="form-control" 
+                        type="text" 
+                        required="true" 
+                        name="username">
+                    <input type="submit">
+                </div>   
+            </form>  
+        </div>
+   
+   
+<!-- Double check if we need to do something here with get or to add to sessions double check / at end of input-->
+{% endblock %}        

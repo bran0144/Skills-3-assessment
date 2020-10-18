@@ -3,25 +3,32 @@
 {%block title %}Top Melons{% endblock %}
 
 {%block content %}
-  <h1>Welcome, {{user_name}}!</h1>
-  <!-- Create a div for every Most Loved Melon using a Jinja for-loop -->
-  <!-- Should follow the formatting of melon-div below -->
-  
-  <div class="melons">
-    <h3> {{username}}, this is a {% for melon_name in melons %}
-                                  {{melon_name}}</h3>
-    <!-- <img> Melon img here -->
-    <<h2>Number of Loves : {{num_loves}}</h2>
-
-    
-    
+  <div class="header">
+    <h1>Welcome, {{ session["username"] }}!</h1>
   </div>
 
-  {% enblock %}
+  <div class=melon-div>
+    <h2> {{ session["username"] }}, this is a 
+      <ul>
+      {% for key, value in melons.items() %}}
+        {% for key in value %}
+        <li>{{ name }}</li>
+      <img> {{ img }} 
+        <li>[[ num_loves }}</li>
+        {% endfor %}
+       {% endfor %} 
+    </h2>
+  
+    <h3>Number of Loves : {{ session["num_loves"] }}</h3>
+
+   
+  </div>
+
   <!-- optional: add a form that does the following: -->
   <!-- contains a dropdown menu of the 4 melons so that use can only select one at a time-->
   <!-- each option in menu should display name of melon and the value should be melon id -->
   <!-- submits to route /love-melon. Should use POST for this (not GET) -->
   <!--  -->
-</body>
-</html>
+  {% endblock %}
+ 
+

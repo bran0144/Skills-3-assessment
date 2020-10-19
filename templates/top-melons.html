@@ -5,11 +5,17 @@
 {%block content %}
   <div class="header">
     <h1>Welcome, {{ session["username"] }}!</h1>
+<!-- Greets user with username taken from get_name on homepage.html -->
+
   </div>
+  {% for melon_id, values in melons.item() %}
+    {% for melon, attributes in values.items() %}
+    <!-- For loop to iterate over nested dictionary of MOST_LOVED_MELONS-->
+    <!-- Trying to create a new div for each of the four melons with -->
+    <!-- Greeting of user, name of melon, image of melon and number of loves of -->
+    <!-- melon. -->
 
   <div class=melon-div>
-    {% for melon_id, values in melons.item() %}
-      {%for melon, attributes in values.items() %}
     <h2>{{ session["username"] }}, this is a {{ values.name }}</h2>
           <img src={{ values.img }}>
         <h3>{{ values.num_loves }}</h3>

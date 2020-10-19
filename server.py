@@ -46,14 +46,14 @@ def top_melon_display():
     "Displays top voted melons"
     melons = MOST_LOVED_MELONS
 
-    if "username" not in session:
-        return render_template("homepage.html")
-    else:
-        session["username"] = request.args.get("username")
+    # if "username" not in session:
+    #     return render_template("homepage.html")
+    # else:
+    #     session["username"] = request.args.get("username")
 
     return render_template("top-melons.html", 
                             username=session["username"], 
-                            melons=MOST_LOVED_MELONS)
+                            melons=melons)
 
 
 @app.route("/")
@@ -61,18 +61,20 @@ def index():
     """Melon Favorites Homepage."""
 
     if "username" in session:
+
         return render_template("top-melons.html")
         #Checks if name is already in session, if so sends user to Top Melons pages
     else:
         return render_template("homepage.html")
+        #If name not in session, stays on homepage to get name
 
 
 @app.route("/")
 def get_name():
-    #Gets name from user, passes to a session to use on other pages
+    #Gets name from user, passes to a session to use on top_melons
     session["username"] = request.args.get["username"]
 
-    return render_template("top-melons.html")
+    return render_template("top-melons.html", username=session["username"])
 
 # optional:
 # @app.route("/love-melon")

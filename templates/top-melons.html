@@ -8,27 +8,15 @@
   </div>
 
   <div class=melon-div>
-    <h2> {{ session["username"] }}, this is a 
-      <ul>
-      {% for key, value in melons.items() %}}
-        {% for key in value %}
-        <li>{{ name }}</li>
-      <img> {{ img }} 
-        <li>[[ num_loves }}</li>
-        {% endfor %}
-       {% endfor %} 
-    </h2>
-  
-    <h3>Number of Loves : {{ session["num_loves"] }}</h3>
-
-   
+    {% for melon_id, values in melons.item() %}
+      {%for melon, attributes in values.items() %}
+    <h2>{{ session["username"] }}, this is a {{ values.name }}</h2>
+          <img src={{ values.img }}>
+        <h3>{{ values.num_loves }}</h3>
+      {% endfor %} 
+    {% endfor %}
   </div>
 
-  <!-- optional: add a form that does the following: -->
-  <!-- contains a dropdown menu of the 4 melons so that use can only select one at a time-->
-  <!-- each option in menu should display name of melon and the value should be melon id -->
-  <!-- submits to route /love-melon. Should use POST for this (not GET) -->
-  <!--  -->
   {% endblock %}
  
 

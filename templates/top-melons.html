@@ -4,24 +4,33 @@
 
 {%block content %}
   <div class="header">
-    <h1>Welcome, {{ session["username"] }}!</h1>
+    <h1>Welcome, {{ session["name"] }}!</h1>
 <!-- Greets user with username taken from get_name on homepage.html -->
 
-  </div>
-  {% for melon_id, values in melons.item() %}
-    {% for melon, attributes in values.items() %}
-    <!-- For loop to iterate over nested dictionary of MOST_LOVED_MELONS-->
-    <!-- Trying to create a new div for each of the four melons with -->
-    <!-- Greeting of user, name of melon, image of melon and number of loves of -->
-    <!-- melon. -->
+ 
+  {% for melon in melons %}
+   
 
-  <div class=melon-div>
-    <h2>{{ session["username"] }}, this is a {{ values.name }}</h2>
-          <img src={{ values.img }}>
-        <h3>{{ values.num_loves }}</h3>
-      {% endfor %} 
-    {% endfor %}
+  <div class='melon-div'>
+    <h3>{{ session["name"] }}, this is a {{melons[melon]['name']}}</h3>
+    <h2>Loved {{melons[melon]['num_loves']}} times.</h2>
+          <img src='{{melons[melon]["img"]}}'>
   </div>
+   
+    {% endfor %}
+
+  <form action='/love-melon' method='post'>
+    <h3>Love a melon</h3>
+    <select name='melon'>
+      {% for melon in melons %}
+        <option name='{{melon}}' value='{{melon}}'>
+          {{ melons[melon]['name'] }}
+        </option>
+        {% endfor %}
+    </select>
+    <input type='submit'>
+  
+  </form>
 
   {% endblock %}
  

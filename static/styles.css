@@ -1,10 +1,9 @@
-.img {
-  height: 200px;
-  width: 200px;
-  margin: green;
-}
 body {
   background-color: peachpuff;
+}
+img {
+  height: 200px;
+  width: 200px;
 }
 h1 {
   font-family: sans-serif;
@@ -15,6 +14,12 @@ h1 {
   padding: 10px;
   width: 205px;
 }
-.image {
-  text-align: center;
+.title-img {
+  display: block;
+  border: 3px green;
+  margin-left: auto;
+  margin-right: auto;
+}
+.melon-div img {
+  border: solid green 2px;
 }

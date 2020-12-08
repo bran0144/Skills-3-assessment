@@ -46,11 +46,10 @@ def top_melon_display():
     "Displays top voted melons"
   
 
-    if "username" not in session:
-        return redirect("/")
+    if "name" not in session:
+        return redirect('/')
     
-    return render_template("top-melons.html", 
-                            melons=MOST_LOVED_MELONS)
+    return render_template('top_melons.html', melons=MOST_LOVED_MELONS)
 
 
 @app.route("/")
@@ -65,23 +64,22 @@ def index():
         #If name not in session, stays on homepage to get name
 
 
-@app.route("/")
+@app.route("/get-name")
 def get_name():
     #Gets name from user, passes to a session to use on top_melons
-    username = request.args.get["username"]
-    session['username'] = username
+    name = request.args.get["name"]
+    session['name'] = name
 
     return redirect("/top-melons")
 
-# optional:
-# @app.route("/love-melon")
 
-# handles optional form from drop down menu in top melons
-# takes POST request and gets melon from form
-# increases num_loves count in MOST_LOVED_MELONS dictionary
-# renders template thank-you.html
-# Thank you should be personalized Thank you, [name]
-# Should have a link back to top-melons page
+@app.route("/love-melon", methods=["POST"])
+def love_melon():
+    """Add one to the melon love count."""
+    melon = request.form.get('melon')
+    MOST_LOVED_MELONS[melon]['num_loves'] +=1
+    return render_template('thank-you.html')
+
 
 
 if __name__ == '__main__':
